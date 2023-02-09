@@ -16,7 +16,7 @@ function Header() {
        gap:"40px"
        }}>
         <li >Home</li>
-        <li> About</li>
+        <li> About   </li>
         <li>Contact</li>
 
 
