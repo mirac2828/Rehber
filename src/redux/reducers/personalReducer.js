@@ -10,6 +10,7 @@ const personalReducer=(state=initialState,action)=>{
 
 
        switch (action.type) {
+
         case actionTypes.personal.ADD_NUMBER:
            return {...state,
             success:true,
@@ -17,6 +18,7 @@ const personalReducer=(state=initialState,action)=>{
             error:false,
             personal:[ ...state.personal,action.payload  ]
             };
+            
             case actionTypes.personal.GET_NUMBER:
            return {...state,
             success:true,

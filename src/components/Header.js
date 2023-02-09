@@ -15,7 +15,7 @@ function Header() {
       <ul style={{ display:"flex",
        gap:"40px"
        }}>
-        <li > Home </li>
+        <li >Home</li>
         <li> About</li>
         <li>Contact</li>
 
