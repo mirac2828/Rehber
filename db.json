@@ -1,0 +1,46 @@
+{
+  "personal": [
+    {
+      "name": "mehmet",
+      "surname": "usta",
+      "phoneNumber": "05072839566",
+      "city": "Ankara",
+      "id": "1675965101607"
+    },
+    {
+      "name": "tayfun",
+      "surname": "usta",
+      "phoneNumber": "18622875586",
+      "city": "CLIFFSIDE PARK",
+      "id": "1675965307155"
+    },
+    {
+      "name": "kerem",
+      "surname": "usta",
+      "phoneNumber": "05072839566",
+      "city": "Ankara",
+      "id": "1675965428063"
+    },
+    {
+      "name": "mehmet",
+      "surname": "usta",
+      "phoneNumber": "05072839566",
+      "city": "Ankara",
+      "id": "1675966140010"
+    },
+    {
+      "name": "hasan",
+      "surname": "usta",
+      "phoneNumber": "05072839566",
+      "city": "Ankara",
+      "id": "1675966156384"
+    },
+    {
+      "name": "mehmet",
+      "surname": "usta",
+      "phoneNumber": "05072839566",
+      "city": "Ankara",
+      "id": "1675966310469"
+    }
+  ]
+}
