@@ -6,22 +6,33 @@ import urls from '../Api/urls'
 import { useDispatch } from 'react-redux'
 import actionTypes from '../redux/actions/actionTypes'
 
+import CustomModal from '../components/CustomModal'
+import { useState } from 'react'
+
 
 
 
 
 
 function Home() {
+  const[willShowModal,setWillShowModal]=useState(false)
+  const[willDeletebook,setWillDeleteBook]=useState("")
+ 
     const dispatch=useDispatch()
     const {personalState}=useSelector(state=>state)
     console.log(personalState)
 
     const handleDelete=(id)=>{ 
-      console.log(id) ;
-     api.delete(`${urls.personal}/${id}`) 
-    .then((res)=>{ dispatch({ type:actionTypes.personal.DELETE_PERSONAL, payload:id })     })
-    .catch((err)=>{  })
-    } 
+     
+      api.delete(`${urls.personal}/${id}`) 
+      .then((res)=>{ dispatch({ type:actionTypes.personal.DELETE_PERSONAL, payload:id })     })
+      .catch((err)=>{  })
+
+
+
+     }
+    
+     
   
 
    
@@ -31,11 +42,11 @@ function Home() {
     <>
 
         
-<div className='text-center '  style={{backgroundColor:"teal"}}> 
-<h1  style={{color:"red"}}> Telefon Rehberi</h1>
- </div>
+<div className='text-center '  style={{height:"100px",backgroundColor:"rgba(121,205,205,.5)",alignItems:"center",display:"flex",justifyContent:"center"}}> 
+<h1  style={{color:"red"}}> Telefon Rehberi</h1></div >
 
-<table className="table mt-5 container">
+
+<table style={{color:"#006666"}}   className="table mt-5 container">
 
   <thead>
     <tr>
@@ -51,7 +62,7 @@ function Home() {
      
      
      
-     <tbody>
+     <tbody style={{}}>
         {personalState.personal.map((item,index) => (
 
 
@@ -62,20 +73,32 @@ function Home() {
       <td>{item.phoneNumber} </td>
       <td>{item.city} </td>
       <div className='d-flex gap-2 '>
-         <button onClick={()=> handleDelete(item.id)}
+         <button onClick={()=>{ setWillShowModal(true)
+         setWillDeleteBook(item.id)
+
+
+
+         }
+         
+        
+        
+        }
          
          
          type='button'
-      style={{color:"yellow",
+      style={{color:"#193300",
        borderRadius:"4px", 
-        border:"none"}}  
-        className='bg-danger'>Sil</button>
-      <button 
+        border:"none",
+      backgroundColor:"#FF6666"}}  
+        >Sil</button>
+      <Link to={ `/edit/${item.id}`  }
       type="button"
-      className='bg-warning' 
+      
       style={{borderRadius:"4px",
-      color:"red",
-      border:"none"}}>Düzenle</button>
+      textDecoration:"none",
+      backgroundColor:"#00CCCC",
+      color:"#FF3399",
+      border:"none"}}>Düzenle</Link>
 
 
 
@@ -86,17 +109,35 @@ function Home() {
 ) )}
      
     </tbody>
+    {willShowModal===true &&(
+      <CustomModal message={"Silmek istiyor musunuz?" }  
+    button={"Evet"} buton={"Hayır"} 
+    onCancel={()=>setWillShowModal(false)}
+    onconfirm={()=>{ handleDelete(willDeletebook)
     
+    setWillShowModal(false) }
+    }
+   
+    
+    />
+   
+
+    )
+
+
+
+    }
     
     </table>
-
+    
 <div className='d-flex  align-items-center justify-content-center '>  
 <Link to={"/list-name" }  
 style={{
 margin:"20px",
 marginRight:"60px",
- backgroundColor:"blue",
- color:"white",
+backgroundColor:"#6666FF",
+
+ color:"#E0E0E0",
  cursor:"pointer",
  borderRadius:"4px",
  padding:"7px",
@@ -105,6 +146,7 @@ marginRight:"60px",
 
 
 </div>
+
 </>
 
    

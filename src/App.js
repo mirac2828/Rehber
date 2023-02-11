@@ -8,6 +8,7 @@ import urls from "./Api/urls";
 import actionTypes from "./redux/actions/actionTypes";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import Edit from "./pages/Edit";
 
 
 
@@ -57,6 +58,7 @@ function App() {
       <Route path="/home"  element={<Home/>} />
       <Route path="/list-name"  element={<ListName/>} />
       <Route path="/"  element={<Home/>} />
+      <Route path="/edit/:bookId"  element={<Edit/>} />
 
       
 

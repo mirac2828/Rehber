@@ -5,7 +5,7 @@ import urls from '../Api/urls'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import actionTypes from '../redux/actions/actionTypes'
-import { useSelector } from 'react-redux'
+
 
 
 
@@ -47,7 +47,7 @@ function ListName() {
       
       
   return (
-    <div > 
+    <div  style={{backgroundColor:"teal",height:"100vh",}}> 
 
     <form onSubmit={handleSubmit}> 
      
@@ -63,7 +63,7 @@ function ListName() {
     placeholder="Hakan"/>
 </div>
 <div className="mb-3 w-50 mx-5">
-  <label htmlFor="surname"
+  <label htmlFor="surname" 
    className="form-label">Soyadı</label>
 
   <input type="text" 
@@ -103,6 +103,13 @@ function ListName() {
     <button 
     className='bg-primary '
     type="submit"
+    style={{border:"none",
+    cursor:"pointer",
+    borderRadius:"6px",
+    width:"80px",
+    padding:"8px",
+    color:"white",
+    backgroundColor:""}}
      > Kaydet</button> 
       
     </div>
