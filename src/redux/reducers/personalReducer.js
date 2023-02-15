@@ -1,4 +1,6 @@
 import actionTypes from "../actions/actionTypes";
+
+
 const initialState= {success:"false",
                      pending:"false",
                      error:"false",
@@ -22,10 +24,22 @@ const personalReducer=(state=initialState,action)=>{
             case actionTypes.personal.GET_NUMBER:
            return {...state,
             success:true,
-            pending:false,
+            pending:true,
             error:false,
             personal:action.payload  
             };
+
+            case actionTypes.personal.EDIT_NUMBER:
+              
+              
+            return {...state,
+               success:true,
+               pending:true,
+               error:false,
+               personal:action.payload };
+
+
+
 
             case actionTypes.personal.DELETE_PERSONAL:
               let filteredPersonal= state.personal.filter(item=> item.id !== action.payload)

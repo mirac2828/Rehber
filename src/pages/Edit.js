@@ -4,67 +4,68 @@ import api from '../Api/api'
 import urls from '../Api/urls'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import actionTypes from '../redux/actions/actionTypes'
+import { useSelector } from 'react-redux'
+
+
+
+
+
+
+
 
 
 function Edit() {
-    const navigate= useNavigate()
-    const[form,setForm]=useState({
-    })
-    
-    const[formValue,setFormValue]=useState({ 
-        name:"",
-        surname:"",
-        city:"",
-        phoneNumber:""
-        
+  const {personalState}=useSelector(state=>state)
 
-
-
-
-    }
-
-
-
-    )     
     const params= useParams()
-useEffect(()=>{api.get(`${urls.personal}/${params.bookId}`)
-  .then((res)=>{  setForm(res.data) 
-   
-     })
-  .catch((err)=>{  alert("hayırr") })
-
-
+    const navigate= useNavigate()
+    const[form,setForm]=useState({})
+    const dispatch=useDispatch()
+    
+    
+    
+  useEffect(()=> 
+  {api.get(`${urls.personal}/${params.bookId}`)
+  .then((res)=>{  setForm(res.data) })
+  .catch((err)=>{  alert("hayırr") }) },[params.bookId])
   
-
-  },[])
+  
   if(form===null) return "loading"
-  const handleEdit=(event)=>{event.preventDefault() 
-    api.post(urls.personal,formValue)
-    .then((res)=>{ setFormValue(res.data) 
-           console.log(setFormValue)})
-    .catch((err)=>{ })
-    navigate("/")
 
+const handleEdit=(event)=>{event.preventDefault() 
+  
+    api.put( `${urls.personal}/${params.bookId}`,form)
+     .then((res)=>{ dispatch({type:actionTypes.personal.EDIT_NUMBER,payload:res.data}) 
+     })
+     .catch((err)=>{ alert('yapma')})
+     navigate("/");
+     
 
     
 
+    
 
 
 }
-  
+if(personalState.pending=== false) 
+return "loading" 
 
 
     
   return (
-    <form onSubmit={handleEdit}> 
+    <form onSubmit={handleEdit} style={{display:"flex", alignItems:"center",justifyContent:"center",flexDirection:"column"
+    }}> 
     
-    <div className=" mt-5 mb-3 w-50 mx-5">
+    <div className=" mt-5 mb-3 w-50 mx-5 ">
+     <div style={{alignItems:"center",display:"flex",width:"100vh",justifyContent:"center"}}> <h1 style={{color:"teal",width:"80%",textAlign:"center"}}> REHBER</h1>  </div>
     
     <label htmlFor="name" className="form-label">Ad</label>
   
     <input type="text"
     value={form.name}
-    onChange={event=> setFormValue({...formValue,name:event.target.value})}
+    onChange={event=> setForm({...form,name:event.target.value})}
    
      className="form-control"
       id="name" 
@@ -78,7 +79,7 @@ useEffect(()=>{api.get(`${urls.personal}/${params.bookId}`)
   
     <input type="text"
     value={form.surname}
-    onChange={(event)=> setFormValue({...formValue,surname:event.target.value})}
+    onChange={(event)=> setForm({...form,surname:event.target.value})}
      className="form-control"
      id="surname"
      htmlFor="surname"
@@ -91,7 +92,7 @@ useEffect(()=>{api.get(`${urls.personal}/${params.bookId}`)
   
     <input type="text"
     value={form.phoneNumber}
-    onChange={ (event)=> setFormValue({...formValue,phoneNumber:event.target.value}) }
+    onChange={ (event)=> setForm({...form,phoneNumber:event.target.value}) }
      className="form-control"
      id="phoneNumber"
      htmlFor="phoneNumber"
@@ -105,8 +106,8 @@ useEffect(()=>{api.get(`${urls.personal}/${params.bookId}`)
     <label htmlFor="name" className="form-label">Şehir</label>
   
     <input type="text"
-    value={form.city}
-    onChange={ (event)=> setFormValue({...formValue,city:event.target.value}) }
+     value={form.city}
+    onChange={ (event)=> setForm({...form,city:event.target.value}) }
      className="form-control"
       id="city"
       htmlFor="city" 

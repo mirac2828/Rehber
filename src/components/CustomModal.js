@@ -13,10 +13,11 @@ function customModal({message,button,buton,onCancel=()=>{} ,onconfirm=()=>{}}) {
     
     
     
-    }}><div style={{width:"400px",height:"270px",backgroundColor:"rgba(238 ,238 ,0,1)",alignItems:"center",
+    }}><div style={{width:"500px",height:"270px",backgroundColor:"#FFF",alignItems:"center",
     justifyContent:"center",color:"green",
-    display:"flex", flexDirection:"column",borderRadius:"10px"
-    }}> <div style={{}}> <h1> {message}</h1>  </div> 
+    display:"flex", flexDirection:"column",borderRadius:"10px",
+   
+    }}> <div style={{display:"flex",justifyContent:"center"   ,alignItems:"center"}}> <h1> {message}</h1>  </div> 
    <div style={{padding:"10px",}}> 
     <button  
     onClick={onconfirm} 

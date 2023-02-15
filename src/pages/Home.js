@@ -20,7 +20,7 @@ function Home() {
  
     const dispatch=useDispatch()
     const {personalState}=useSelector(state=>state)
-    console.log(personalState)
+    
 
     const handleDelete=(id)=>{ 
      
@@ -39,14 +39,14 @@ function Home() {
   return (
 
    
-    <>
+    < div  style={{height:"100vh",backgroundColor:"rgba(121,205,205,.5)" }}>
 
         
-<div className='text-center '  style={{height:"100px",backgroundColor:"rgba(121,205,205,.5)",alignItems:"center",display:"flex",justifyContent:"center"}}> 
+<div className='text-center '  style={{height:"100px",backgroundColor:"rgba(121,205,205,.5)",alignItems:"center",display:"flex"    ,justifyContent:"center"}}> 
 <h1  style={{color:"red"}}> Telefon Rehberi</h1></div >
 
 
-<table style={{color:"#006666"}}   className="table mt-5 container">
+<table style={{color:"#006666",zIndex:"100"}}   className="table mt-5 container">
 
   <thead>
     <tr>
@@ -119,7 +119,7 @@ function Home() {
     }
    
     
-    />
+    div/>
    
 
     )
@@ -147,7 +147,7 @@ backgroundColor:"#6666FF",
 
 </div>
 
-</>
+</div>
 
    
   )

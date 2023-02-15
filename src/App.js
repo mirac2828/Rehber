@@ -1,4 +1,4 @@
-import React from "react";
+
 import { BrowserRouter ,Routes,Route} from "react-router-dom";
 import Home from "./pages/Home";
 import ListName from "./pages/ListName";
@@ -9,6 +9,8 @@ import actionTypes from "./redux/actions/actionTypes";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Edit from "./pages/Edit";
+import Resim from "./pages/Resim";
+
 
 
 
@@ -34,7 +36,7 @@ function App() {
 
 
 
-  },[])
+  },[dispatch])
   
   if(personalState.success=== false) 
  return "loading" 
@@ -59,9 +61,9 @@ function App() {
       <Route path="/list-name"  element={<ListName/>} />
       <Route path="/"  element={<Home/>} />
       <Route path="/edit/:bookId"  element={<Edit/>} />
+      <Route path="*"  element={<Resim/>} />
 
       
-
 
 
     </Routes>
