@@ -9,7 +9,7 @@ import actionTypes from "./redux/actions/actionTypes";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Edit from "./pages/Edit";
-import Resim from "./pages/Resim";
+
 
 
 
@@ -61,7 +61,7 @@ function App() {
       <Route path="/list-name"  element={<ListName/>} />
       <Route path="/"  element={<Home/>} />
       <Route path="/edit/:bookId"  element={<Edit/>} />
-      <Route path="*"  element={<Resim/>} />
+     
 
       
 
