@@ -1,3 +1,3 @@
-<h1>Rehbver Projesi <h1>
+<h1>Rehber Projesi <h1>
 
 <img src="resim.png" /> 
